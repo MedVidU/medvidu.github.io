@@ -59,7 +59,7 @@
 
         /* Hero */
         .hero {
-            padding: 160px 0 110px;
+            padding: 150px 0 110px;
             position: relative;
             overflow: hidden;
             background:
@@ -95,9 +95,8 @@
         }
         .hero .meta {
             font-size: clamp(14px, 1.4vw, 17px);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.02em;
             color: #ffffff;
-            text-transform: uppercase;
             font-weight: 600;
         }
         .hero .btn {
@@ -274,6 +273,8 @@
             color: var(--accent);
             margin-bottom: 2px;
         }
+        .org-affil a { color: inherit; text-decoration: none; }
+        .org-affil a:hover { text-decoration: underline; }
         .org-affil.c1 { color: #60A5FA; }
         .org-affil.c2 { color: #5EEAD4; }
         .org-affil.c3 { color: #FBBF24; }
@@ -360,7 +361,7 @@
     <nav class="nav-shell fixed w-full z-50 top-0">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="display text-base font-bold" style="color: var(--text);">
-                MedVidU 2026
+                MedVidU @ ECCV2026
             </a>
             <div class="hidden md:flex space-x-6 text-sm">
                 <a href="#home" class="nav-link">Home</a>
@@ -372,6 +373,7 @@
                 <a href="#speakers" class="nav-link">Speakers</a>
                 <a href="#schedule" class="nav-link">Schedule</a>
                 <a href="#organizers" class="nav-link">Organizers</a>
+                <a href="#venue" class="nav-link">Venue</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="md:hidden">
@@ -390,6 +392,7 @@
             <a href="#speakers" class="block px-6 py-3 nav-link">Speakers</a>
             <a href="#schedule" class="block px-6 py-3 nav-link">Schedule</a>
             <a href="#organizers" class="block px-6 py-3 nav-link">Organizers</a>
+            <a href="#venue" class="block px-6 py-3 nav-link">Venue</a>
             <a href="#contact" class="block px-6 py-3 nav-link">Contact</a>
         </div>
     </nav>
@@ -397,13 +400,14 @@
     <header id="home" class="hero">
         <div class="container mx-auto px-6 hero-grid" style="max-width: 1100px;">
             <h1 class="mb-6">
-                Workshop on Medical Video <span class="gradient-text">Understanding</span>
+                <span style="display: block; font-size: 0.4em; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px;">ECCV 2026</span>
+                Workshop On Medical Video <span class="gradient-text">Understanding</span>
             </h1>
-            <h2 class="mb-4">(MedVidU@ECCV2026)</h2>
+            <h2 class="mb-4">(MedVidU @ ECCV2026)</h2>
             <h2 class="mb-4">
                 Advancing video understanding for surgical and clinical procedures.
             </h2>
-            <p class="meta mb-10">8&ndash;9 September 2026 &middot; Malmö, Sweden</p>
+            <h2 class="mb-10">8&ndash;9 September 2026 &middot; Malmö, Sweden</h2>
             <div class="hero-actions flex flex-col sm:flex-row gap-4">
                 <a href="#callforpapers" class="btn btn-primary">Call for Papers</a>
                 <a href="#challenge" class="btn btn-primary">MedVidU Challenge</a>
@@ -534,6 +538,8 @@
 
         <section id="speakers">
             <div class="section-heading"><h2>Keynote Speakers</h2></div>
+            <p class="muted" style="text-align: center;">Speakers to be announced.</p>
+            <!--
             <p class="muted" style="text-align: center; margin-bottom: 40px;">Invited speakers (tentative).</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="card p-6 text-center">
@@ -551,6 +557,7 @@
                     <p class="org-loc" style="margin-top: 8px; font-style: italic;">Tentative</p>
                 </div>
             </div>
+            -->
         </section>
 
         <section id="schedule">
@@ -587,68 +594,84 @@
                 <div class="card p-6 text-center">
                     <img src="img/busam_benjamin.jpg" alt="Benjamin Busam" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BB';">
                     <h3 class="org-name"><a href="https://www.professoren.tum.de/en/busam-benjamin">Benjamin Busam</a></h3>
-                    <p class="org-affil c3">TUM</p>
+                    <p class="org-affil c3"><a href="https://www.tum.de/" target="_blank" rel="noopener">TUM</a></p>
                     <p class="org-loc">Germany</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/Terrence.jpg" alt="Terrence Chen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=TC';">
                     <h3 class="org-name"><a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en">Terrence Chen</a></h3>
-                    <p class="org-affil c4">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/Anwesa.jpg" alt="Anwesa Choudhuri" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=AC';">
                     <h3 class="org-name"><a href="https://anwesachoudhuri.github.io/">Anwesa Choudhuri</a></h3>
-                    <p class="org-affil c5">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/Zhongpai.jpg" alt="Zhongpai Gao" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZG';">
                     <h3 class="org-name"><a href="https://sites.google.com/site/gaozhongpai/home">Zhongpai Gao</a></h3>
-                    <p class="org-affil c6">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/NavabNassir.jpg" alt="Nassir Navab" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NN';">
                     <h3 class="org-name"><a href="https://www.professoren.tum.de/en/navab-nassir">Nassir Navab</a></h3>
-                    <p class="org-affil c1">TUM</p>
+                    <p class="org-affil c3"><a href="https://www.tum.de/" target="_blank" rel="noopener">TUM</a></p>
                     <p class="org-loc">Germany</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/nguyen.png" alt="Van Nguyen Nguyen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=VN';">
                     <h3 class="org-name"><a href="https://nv-nguyen.github.io/">Van Nguyen Nguyen</a></h3>
-                    <p class="org-affil c2">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/nicolaspadoy.jpg" alt="Nicolas Padoy" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NP';">
                     <h3 class="org-name"><a href="https://camma.unistra.fr/npadoy/">Nicolas Padoy</a></h3>
-                    <p class="org-affil c3">University of Strasbourg / IHU Strasbourg</p>
+                    <p class="org-affil"><a href="https://en.unistra.fr/fr" target="_blank" rel="noopener" style="color: #5EEAD4;">University of Strasbourg</a> / <a href="https://www.ihu-strasbourg.eu/?lang=en" target="_blank" rel="noopener" style="color: #34D399;">IHU Strasbourg</a></p>
                     <p class="org-loc">France</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/benjaminplanche.jpg" alt="Benjamin Planche" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BP';">
                     <h3 class="org-name"><a href="https://planche.me/">Benjamin Planche</a></h3>
-                    <p class="org-affil c4">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/ziyan.jpg" alt="Ziyan Wu" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZW';">
                     <h3 class="org-name"><a href="https://wuziyan.com">Ziyan Wu</a></h3>
-                    <p class="org-affil c5">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/kunyuan.jpg" alt="Kun Yuan" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=KY';">
                     <h3 class="org-name"><a href="https://flaick.github.io/">Kun Yuan</a></h3>
-                    <p class="org-affil c6">University of Strasbourg &amp; TUM</p>
+                    <p class="org-affil"><a href="https://en.unistra.fr/fr" target="_blank" rel="noopener" style="color: #5EEAD4;">University of Strasbourg</a> <span style="color: var(--text-faint);">&amp;</span> <a href="https://www.tum.de/" target="_blank" rel="noopener" style="color: #FBBF24;">TUM</a></p>
                     <p class="org-loc">France / Germany</p>
                 </div>
                 <div class="card p-6 text-center">
                     <img src="img/Meng.jpeg" alt="Meng Zheng" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=MZ';">
                     <h3 class="org-name"><a href="https://meng-zheng.com/">Meng Zheng</a></h3>
-                    <p class="org-affil c1">United Imaging Intelligence</p>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="venue">
+            <div class="section-heading"><h2>Venue &amp; Location</h2></div>
+            <p class="muted" style="text-align: center; margin-bottom: 32px;">The workshop will be held in conjunction with ECCV 2026.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <div class="card-section md:col-span-2">
+                    <h3 style="margin-top: 0;">Workshop Location</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--accent);"></i>Malmö, Sweden</p>
+                    <p>8&ndash;9 September 2026</p>
+                    <p style="margin-top: 16px;">MedVidU is co-located with the <a href="https://eccv.ecva.net/Conferences/2026" target="_blank" rel="noopener">European Conference on Computer Vision (ECCV 2026)</a>. Please refer to the main ECCV 2026 website for details on travel and accommodation.</p>
+                </div>
+                <div class="md:col-span-1" style="border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5);">
+                    <img src="img/Malmo.jpg" alt="Malmö, Sweden" style="width: 100%; height: 100%; display: block; object-fit: cover;">
                 </div>
             </div>
         </section>
@@ -665,7 +688,7 @@
     <footer style="background: var(--bg-soft); border-top: 1px solid var(--line); padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 14px;">
         <div class="container mx-auto px-6">
             <p>&copy; 2026 Workshop on Medical Video Understanding (MedVidU). All rights reserved.</p>
-            <p style="margin-top: 6px;">Held in conjunction with ECCV 2026.</p>
+            <p style="margin-top: 6px;">Held in conjunction with <a href="https://eccv.ecva.net/Conferences/2026" target="_blank" rel="noopener">ECCV 2026</a>.</p>
         </div>
     </footer>
 
