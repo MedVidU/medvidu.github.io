@@ -295,6 +295,43 @@
         }
 
         .muted { color: var(--text-faint); }
+
+        /* Important dates table */
+        table.dates {
+            width: 100%;
+            border-spacing: 0;
+            font-size: 15px;
+            background: rgba(11, 18, 32, 0.3);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        table.dates td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: middle;
+        }
+        table.dates tr:last-child td { border-bottom: none; }
+        table.dates td.label {
+            font-weight: 600;
+            color: var(--accent);
+            width: 33%;
+        }
+        table.dates td.date {
+            color: var(--text);
+            width: 33%;
+        }
+        table.dates td.countdown {
+            color: var(--text-faint);
+            font-variant-numeric: tabular-nums;
+        }
+        table.dates td.countdown.passed { color: var(--text-faint); font-style: italic; }
+        .dates-note {
+            font-size: 13px;
+            color: var(--text-faint);
+            font-style: italic;
+            margin-top: 12px;
+        }
         ::selection { background: rgba(96, 165, 250, 0.30); color: #f8fafc; }
 
         /* Scrollbar (WebKit) */
@@ -352,7 +389,7 @@
             <h2 class="mb-4">
                 Advancing video understanding for surgical and clinical procedures.
             </h2>
-            <p class="meta mb-10">Malmö, Sweden</p>
+            <p class="meta mb-10">8&ndash;9 September 2026 &middot; Malmö, Sweden</p>
             <div class="hero-actions flex flex-col sm:flex-row gap-4">
                 <a href="#callforpapers" class="btn btn-primary">Call for Papers</a>
                 <a href="#challenge" class="btn btn-primary">MedVidU Challenge</a>
@@ -390,15 +427,37 @@
                     <li>Efficient video representation learning for long medical procedures</li>
                 </ul>
 
-                <h3>Timeline</h3>
-                <ul>
-                    <li>Paper submission deadline: <span class="muted">TBD (approx. July 2026)</span></li>
-                    <li>Notification to authors: <span class="muted">TBD (approx. August 2026)</span></li>
-                    <li>Camera-ready deadline: <span class="muted">TBD (approx. August 2026)</span></li>
-                    <li>Challenge submission deadline: <span class="muted">TBD (approx. August 2026)</span></li>
-                    <li>Workshop date: <span class="muted">ECCV 2026</span></li>
-                </ul>
-                <p class="muted" style="font-style: italic; font-size: 14px;">Submission portal will be announced soon.</p>
+                <h3>Important Dates</h3>
+                <table class="dates">
+                    <tbody>
+                        <tr>
+                            <td class="label">Paper Submission</td>
+                            <td class="date">July 13, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-07-14T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">ECCV Accepted Paper Submit</td>
+                            <td class="date">July 24, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-07-25T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Paper Notification</td>
+                            <td class="date">July 31, 2026</td>
+                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Camera Ready</td>
+                            <td class="date">August 15, 2026</td>
+                            <td class="countdown" data-deadline="2026-08-16T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Challenge Deadline</td>
+                            <td class="date">July 31, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="dates-note">*All deadlines are Anywhere on Earth (AoE). Timelines are subject to change. Submission portal will be announced soon.</p>
             </div>
         </section>
 
@@ -608,6 +667,36 @@
                 icon.classList.add('fa-bars');
             });
         });
+
+        const countdownEls = document.querySelectorAll('.countdown');
+        function updateCountdowns() {
+            const now = Date.now();
+            countdownEls.forEach(el => {
+                const target = new Date(el.dataset.deadline).getTime();
+                let diff = target - now;
+                if (diff <= 0) {
+                    el.textContent = 'Deadline Passed';
+                    el.classList.add('passed');
+                    return;
+                }
+                const week = 1000 * 60 * 60 * 24 * 7;
+                const day = 1000 * 60 * 60 * 24;
+                const hour = 1000 * 60 * 60;
+                const minute = 1000 * 60;
+                const weeks = Math.floor(diff / week);
+                const days = Math.floor((diff % week) / day);
+                const hours = Math.floor((diff % day) / hour);
+                const minutes = Math.floor((diff % hour) / minute);
+                const seconds = Math.floor((diff % minute) / 1000);
+                const dStr = String(days).padStart(2, '0');
+                const hStr = String(hours).padStart(2, '0');
+                const mStr = String(minutes).padStart(2, '0');
+                const sStr = String(seconds).padStart(2, '0');
+                el.textContent = `${weeks} weeks ${dStr} days ${hStr}:${mStr}:${sStr}`;
+            });
+        }
+        updateCountdowns();
+        setInterval(updateCountdowns, 1000);
     </script>
 
 
