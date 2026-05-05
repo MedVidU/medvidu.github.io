@@ -175,6 +175,20 @@
             border-color: var(--accent-soft);
             transform: translateY(-1px);
         }
+        .btn-disabled {
+            background: var(--accent);
+            color: #0b1220;
+            border: 1px solid var(--accent);
+            cursor: not-allowed;
+            font-weight: 700;
+            opacity: 0.85;
+        }
+        .btn-disabled:hover {
+            text-decoration: none;
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: none;
+        }
 
         /* Eyebrow pill */
         .eyebrow {
@@ -353,8 +367,8 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#callforpapers" class="nav-link">Call for Papers</a>
                 <a href="#challenge" class="nav-link">Challenge</a>
-                <a href="#dataset" class="nav-link">Dataset</a>
-                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <!-- <a href="#dataset" class="nav-link">Dataset</a> -->
+                <!-- <a href="#leaderboard" class="nav-link">Leaderboard</a> -->
                 <a href="#speakers" class="nav-link">Speakers</a>
                 <a href="#schedule" class="nav-link">Schedule</a>
                 <a href="#organizers" class="nav-link">Organizers</a>
@@ -371,8 +385,8 @@
             <a href="#about" class="block px-6 py-3 nav-link">About</a>
             <a href="#callforpapers" class="block px-6 py-3 nav-link">Call for Papers</a>
             <a href="#challenge" class="block px-6 py-3 nav-link">Challenge</a>
-            <a href="#dataset" class="block px-6 py-3 nav-link">Dataset</a>
-            <a href="#leaderboard" class="block px-6 py-3 nav-link">Leaderboard</a>
+            <!-- <a href="#dataset" class="block px-6 py-3 nav-link">Dataset</a> -->
+            <!-- <a href="#leaderboard" class="block px-6 py-3 nav-link">Leaderboard</a> -->
             <a href="#speakers" class="block px-6 py-3 nav-link">Speakers</a>
             <a href="#schedule" class="block px-6 py-3 nav-link">Schedule</a>
             <a href="#organizers" class="block px-6 py-3 nav-link">Organizers</a>
@@ -404,7 +418,7 @@
             <div class="card-section">
                 <p>Welcome to the Workshop on Medical Video Understanding (MedVidU), held in conjunction with ECCV 2026.</p>
                 <p>Medical video understanding is a rapidly emerging frontier at the intersection of computer vision and healthcare. Medical procedures generate massive volumes of video data, yet the ability to automatically interpret this data &mdash; recognizing phases, detecting critical anatomical structures, grounding temporal events, and generating rich granular textual descriptions &mdash; remains an open and challenging problem. Recent advances in large multimodal models and video foundation models have created unprecedented opportunities to tackle these tasks, but standardized benchmarks that span diverse tasks and community-wide evaluation protocols are still lacking.</p>
-                <p>This workshop addresses this gap by bringing together researchers working on medical AI and video understanding. To catalyze progress, the workshop hosts the <strong>MedVidU Challenge</strong>, centered on the diverse <strong>MedVidBench</strong> dataset, spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+                <p>This workshop addresses this gap by bringing together researchers working on medical AI and video understanding. To catalyze progress, the workshop hosts the <strong>MedVidU Challenge</strong>, centered on the diverse <strong><a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a></strong> dataset (CVPR 2026), spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
             </div>
         </section>
 
@@ -413,6 +427,12 @@
             <div class="card-section">
                 <p>Please submit your manuscript formatted according to the ECCV 2026 author guidelines. Accepted papers are intended to be published in the ECCV 2026 workshop proceedings. Top-performing challenge participants will be invited to submit technical reports for inclusion in the proceedings.</p>
                 <p>We encourage submissions reporting novel theories, methods, and applications of video understanding in medical and surgical settings.</p>
+
+                <div style="text-align: center; margin: 28px 0 8px;">
+                    <span class="btn btn-disabled" aria-disabled="true">
+                        OpenReview Submission (Coming Soon)
+                    </span>
+                </div>
 
                 <h3>Topics of Interest</h3>
                 <ul>
@@ -450,11 +470,6 @@
                             <td class="date">August 15, 2026</td>
                             <td class="countdown" data-deadline="2026-08-16T11:59:59Z">Loading&hellip;</td>
                         </tr>
-                        <tr>
-                            <td class="label">Challenge Deadline</td>
-                            <td class="date">July 31, 2026 (23:59 AoE)</td>
-                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
-                        </tr>
                     </tbody>
                 </table>
                 <p class="dates-note">*All deadlines are Anywhere on Earth (AoE). Timelines are subject to change. Submission portal will be announced soon.</p>
@@ -464,7 +479,7 @@
         <section id="challenge">
             <div class="section-heading"><h2>MedVidU Challenge</h2></div>
             <div class="card-section">
-                <p>The MedVidU Challenge is built on the MedVidBench dataset, providing a unified evaluation across diverse tasks including:</p>
+                <p>The MedVidU Challenge is built on the <a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a> dataset (CVPR 2026), providing a unified evaluation across diverse tasks including:</p>
                 <ul>
                     <li>Critical View of Safety (CVS) assessment</li>
                     <li>Next action prediction</li>
@@ -474,21 +489,33 @@
                     <li>Video summary and region captioning</li>
                 </ul>
                 <p>All submissions are evaluated on a strictly held-out test set. The challenge spans four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+
+                <h3>Important Dates</h3>
+                <table class="dates">
+                    <tbody>
+                        <tr>
+                            <td class="label">Challenge Deadline</td>
+                            <td class="date">July 31, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="dates-note">*Deadline is Anywhere on Earth (AoE). Timelines are subject to change.</p>
+
                 <div class="coming-soon" style="margin-top: 32px;">
                     <strong>Challenge details coming soon</strong>
-                    Submission instructions, evaluation protocol, and prize information will be posted here.
+                    Submission instructions, dataset, evaluation protocol, and prize information will be posted here.
                 </div>
             </div>
         </section>
 
+        <!--
         <section id="dataset">
             <div class="section-heading"><h2>Dataset</h2></div>
             <div class="card-section">
                 <p>MedVidBench &mdash; a multi-task medical video benchmark spanning four clinical and surgical domains.</p>
                 <div class="coming-soon" style="margin-top: 24px;">
                     <strong>Dataset release coming soon</strong>
-                    <!-- Download links, data card, and licensing information will be available here. -->
-                    <!-- https://huggingface.co/datasets/MedVidBench -->
                 </div>
             </div>
         </section>
@@ -500,10 +527,10 @@
                 <div class="coming-soon" style="margin-top: 24px;">
                     <strong>Leaderboard coming soon</strong>
                     The MedVidBench leaderboard will be hosted on HuggingFace and embedded here.
-                    <!-- https://huggingface.co/spaces/MedVidBench/leaderboard -->
                 </div>
             </div>
         </section>
+        -->
 
         <section id="speakers">
             <div class="section-heading"><h2>Keynote Speakers</h2></div>
