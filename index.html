@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop on Medical Video Understanding (MedVidU @ ECCV 2026)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b1220;
+            --bg-soft: #0f172a;
+            --bg-card: #131c2f;
+            --line: #1f2a44;
+            --line-strong: #2a3a5e;
+            --text: #e5e7eb;
+            --text-dim: #b6c0cf;
+            --text-faint: #8a96aa;
+            --accent: #60A5FA;
+            --accent-strong: #3B82F6;
+            --accent-soft: #93C5FD;
+            --accent-deep: #1e40af;
+        }
+        html { scroll-behavior: smooth; }
+        body, p, h1, h2, h3, h4 {
+            margin: 0;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text);
+        }
+        body {
+            background: var(--bg);
+            line-height: 1.6;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, .display {
+            font-family: 'Space Grotesk', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+        a { color: var(--accent-strong); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Navigation */
+        .nav-shell {
+            background: rgba(11, 18, 32, 0.85);
+            backdrop-filter: saturate(160%) blur(12px);
+            -webkit-backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-link {
+            color: var(--text-dim);
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover { color: var(--accent); text-decoration: none; }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 110px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg,
+                    rgba(11,18,32,1.0) 0%,
+                    rgba(11,18,32,1.0) 8%,
+                    rgba(11,18,32,0.55) 25%,
+                    rgba(11,18,32,0.55) 100%),
+                url('img/background.jpg') center/auto 125% no-repeat,
+                #0b1220;
+            background-color: #0b1220;
+            border-bottom: 1px solid var(--line);
+        }
+        .hero > * { position: relative; z-index: 1; }
+        .hero-grid { text-align: center; }
+        .hero-grid h2 { margin-left: auto; margin-right: auto; max-width: 760px; }
+        .hero-grid .hero-actions { justify-content: center; }
+        .hero h1 {
+            font-size: clamp(40px, 6.5vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .hero .gradient-text {
+            color: #ffffff;
+        }
+        .hero h2 {
+            font-size: clamp(16px, 1.7vw, 21px);
+            line-height: 1.5;
+            font-weight: 400;
+            color: #ffffff;
+        }
+        .hero .meta {
+            font-size: clamp(14px, 1.4vw, 17px);
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .hero .btn {
+            font-size: clamp(15px, 1.5vw, 18px);
+            padding: 14px 28px;
+        }
+
+        /* Section title — thick blue underline bar */
+        .section-heading {
+            text-align: center;
+            margin: 72px 0 32px;
+        }
+        .section-heading h2 {
+            display: inline-block;
+            font-size: clamp(22px, 2.8vw, 32px);
+            line-height: 1.2;
+            color: var(--text);
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 8px;
+        }
+        /* Section content card */
+        .card-section {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 32px 40px;
+            box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5);
+        }
+        .card-section > :first-child { margin-top: 0; }
+        .card-section > :last-child { margin-bottom: 0; }
+        .section-sub {
+            font-size: 16px;
+            color: var(--text-dim);
+            margin-top: -20px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        /* Sub-headings inside content */
+        .content h3 {
+            font-size: 24px;
+            margin: 32px 0 12px;
+            color: var(--text);
+            font-weight: 600;
+        }
+        .content p { margin-bottom: 16px; }
+        .content ul {
+            list-style: disc;
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+        .content li { margin: 6px 0; }
+        .content a { color: var(--accent-strong); }
+        .content a:hover { text-decoration: underline; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #0b1220;
+            border: 1px solid var(--accent);
+            font-weight: 700;
+        }
+        .btn-primary:hover {
+            text-decoration: none;
+            background: var(--accent-soft);
+            border-color: var(--accent-soft);
+            transform: translateY(-1px);
+        }
+
+        /* Eyebrow pill */
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            background: rgba(96, 165, 250, 0.10);
+            border-radius: 6px;
+        }
+
+        /* Schedule table */
+        table.schedule {
+            width: 100%;
+            border-spacing: 0;
+            font-size: 16px;
+        }
+        table.schedule th {
+            border-bottom: 1.5px solid var(--accent);
+            font-weight: 600;
+            text-align: left;
+            padding: 14px 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dim);
+        }
+        table.schedule td {
+            border-bottom: 1px solid var(--line);
+            padding: 18px 0;
+            vertical-align: top;
+            color: var(--text);
+        }
+        table.schedule td.time {
+            width: 180px;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-faint);
+        }
+        table.schedule tr.keynote td:not(.time) {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        table.schedule tr.break td:not(.time) {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Organizer / speaker cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 24px 18px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px -8px rgba(0,0,0,0.55);
+            border-color: var(--line-strong);
+        }
+        .profile-img {
+            width: 128px;
+            height: 128px;
+            object-fit: cover;
+            border: 4px solid var(--line-strong);
+            background: var(--bg-soft);
+        }
+        .org-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .org-name a { color: var(--text); }
+        .org-name a:hover { color: var(--accent); text-decoration: none; }
+        .org-affil {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+        .org-affil.c1 { color: #60A5FA; }
+        .org-affil.c2 { color: #5EEAD4; }
+        .org-affil.c3 { color: #FBBF24; }
+        .org-affil.c4 { color: #34D399; }
+        .org-affil.c5 { color: #F472B6; }
+        .org-affil.c6 { color: #A78BFA; }
+        .org-loc {
+            font-size: 13px;
+            color: var(--text-faint);
+        }
+        .org-bio {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 10px;
+            line-height: 1.55;
+        }
+
+        /* "Coming soon" placeholders */
+        .coming-soon {
+            text-align: center;
+            padding: 48px 24px;
+            border: 1px dashed var(--line-strong);
+            border-radius: 8px;
+            color: var(--text-dim);
+            background: var(--bg-soft);
+        }
+        .coming-soon strong {
+            display: block;
+            color: var(--text);
+            font-size: 18px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .muted { color: var(--text-faint); }
+        ::selection { background: rgba(96, 165, 250, 0.30); color: #f8fafc; }
+
+        /* Scrollbar (WebKit) */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5e85; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-shell fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="display text-base font-bold" style="color: var(--text);">
+                MedVidU 2026
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#callforpapers" class="nav-link">Call for Papers</a>
+                <a href="#challenge" class="nav-link">Challenge</a>
+                <a href="#dataset" class="nav-link">Dataset</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#speakers" class="nav-link">Speakers</a>
+                <a href="#schedule" class="nav-link">Schedule</a>
+                <a href="#organizers" class="nav-link">Organizers</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="focus:outline-none" style="color: var(--text);">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden" style="background: var(--bg-soft); border-top: 1px solid var(--line); color: var(--text);">
+            <a href="#home" class="block px-6 py-3 nav-link">Home</a>
+            <a href="#about" class="block px-6 py-3 nav-link">About</a>
+            <a href="#callforpapers" class="block px-6 py-3 nav-link">Call for Papers</a>
+            <a href="#challenge" class="block px-6 py-3 nav-link">Challenge</a>
+            <a href="#dataset" class="block px-6 py-3 nav-link">Dataset</a>
+            <a href="#leaderboard" class="block px-6 py-3 nav-link">Leaderboard</a>
+            <a href="#speakers" class="block px-6 py-3 nav-link">Speakers</a>
+            <a href="#schedule" class="block px-6 py-3 nav-link">Schedule</a>
+            <a href="#organizers" class="block px-6 py-3 nav-link">Organizers</a>
+            <a href="#contact" class="block px-6 py-3 nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container mx-auto px-6 hero-grid" style="max-width: 1100px;">
+            <h1 class="mb-6">
+                Workshop on Medical Video <span class="gradient-text">Understanding</span>
+            </h1>
+            <h2 class="mb-4">(MedVidU@ECCV2026)</h2>
+            <h2 class="mb-4">
+                Advancing video understanding for surgical and clinical procedures.
+            </h2>
+            <p class="meta mb-10">Malmö, Sweden</p>
+            <div class="hero-actions flex flex-col sm:flex-row gap-4">
+                <a href="#callforpapers" class="btn btn-primary">Call for Papers</a>
+                <a href="#challenge" class="btn btn-primary">MedVidU Challenge</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 content" style="max-width: 1100px; padding-bottom: 80px;">
+
+        <section id="about">
+            <div class="section-heading"><h2>About</h2></div>
+            <div class="card-section">
+                <p>Welcome to the Workshop on Medical Video Understanding (MedVidU), held in conjunction with ECCV 2026.</p>
+                <p>Medical video understanding is a rapidly emerging frontier at the intersection of computer vision and healthcare. Medical procedures generate massive volumes of video data, yet the ability to automatically interpret this data &mdash; recognizing phases, detecting critical anatomical structures, grounding temporal events, and generating rich granular textual descriptions &mdash; remains an open and challenging problem. Recent advances in large multimodal models and video foundation models have created unprecedented opportunities to tackle these tasks, but standardized benchmarks that span diverse tasks and community-wide evaluation protocols are still lacking.</p>
+                <p>This workshop addresses this gap by bringing together researchers working on medical AI and video understanding. To catalyze progress, the workshop hosts the <strong>MedVidU Challenge</strong>, centered on the diverse <strong>MedVidBench</strong> dataset, spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+            </div>
+        </section>
+
+        <section id="callforpapers">
+            <div class="section-heading"><h2>Call for Papers</h2></div>
+            <div class="card-section">
+                <p>Please submit your manuscript formatted according to the ECCV 2026 author guidelines. Accepted papers are intended to be published in the ECCV 2026 workshop proceedings. Top-performing challenge participants will be invited to submit technical reports for inclusion in the proceedings.</p>
+                <p>We encourage submissions reporting novel theories, methods, and applications of video understanding in medical and surgical settings.</p>
+
+                <h3>Topics of Interest</h3>
+                <ul>
+                    <li>Temporal action grounding in medical video</li>
+                    <li>Dense video captioning for medical procedures</li>
+                    <li>Surgical tool detection and tracking</li>
+                    <li>Medical video foundation models and multimodal large language models</li>
+                    <li>Surgical phase and action recognition</li>
+                    <li>Medical scene understanding from videos and 3D/4D reconstruction</li>
+                    <li>Privacy-preserving analysis of surgical recordings</li>
+                    <li>Explainability and trustworthiness in AI for medical videos</li>
+                    <li>Efficient video representation learning for long medical procedures</li>
+                </ul>
+
+                <h3>Timeline</h3>
+                <ul>
+                    <li>Paper submission deadline: <span class="muted">TBD (approx. July 2026)</span></li>
+                    <li>Notification to authors: <span class="muted">TBD (approx. August 2026)</span></li>
+                    <li>Camera-ready deadline: <span class="muted">TBD (approx. August 2026)</span></li>
+                    <li>Challenge submission deadline: <span class="muted">TBD (approx. August 2026)</span></li>
+                    <li>Workshop date: <span class="muted">ECCV 2026</span></li>
+                </ul>
+                <p class="muted" style="font-style: italic; font-size: 14px;">Submission portal will be announced soon.</p>
+            </div>
+        </section>
+
+        <section id="challenge">
+            <div class="section-heading"><h2>MedVidU Challenge</h2></div>
+            <div class="card-section">
+                <p>The MedVidU Challenge is built on the MedVidBench dataset, providing a unified evaluation across diverse tasks including:</p>
+                <ul>
+                    <li>Critical View of Safety (CVS) assessment</li>
+                    <li>Next action prediction</li>
+                    <li>Skill assessment</li>
+                    <li>Temporal action grounding</li>
+                    <li>Dense video captioning</li>
+                    <li>Video summary and region captioning</li>
+                </ul>
+                <p>All submissions are evaluated on a strictly held-out test set. The challenge spans four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+                <div class="coming-soon" style="margin-top: 32px;">
+                    <strong>Challenge details coming soon</strong>
+                    Submission instructions, evaluation protocol, and prize information will be posted here.
+                </div>
+            </div>
+        </section>
+
+        <section id="dataset">
+            <div class="section-heading"><h2>Dataset</h2></div>
+            <div class="card-section">
+                <p>MedVidBench &mdash; a multi-task medical video benchmark spanning four clinical and surgical domains.</p>
+                <div class="coming-soon" style="margin-top: 24px;">
+                    <strong>Dataset release coming soon</strong>
+                    Download links, data card, and licensing information will be available here.
+                    <!-- https://huggingface.co/datasets/MedVidBench -->
+                </div>
+            </div>
+        </section>
+
+        <section id="leaderboard">
+            <div class="section-heading"><h2>Leaderboard</h2></div>
+            <div class="card-section">
+                <p>Track community progress on the MedVidBench multi-task evaluation suite.</p>
+                <div class="coming-soon" style="margin-top: 24px;">
+                    <strong>Leaderboard coming soon</strong>
+                    The MedVidBench leaderboard will be hosted on HuggingFace and embedded here.
+                    <!-- https://huggingface.co/spaces/MedVidBench/leaderboard -->
+                </div>
+            </div>
+        </section>
+
+        <section id="speakers">
+            <div class="section-heading"><h2>Keynote Speakers</h2></div>
+            <p class="muted" style="text-align: center; margin-bottom: 40px;">Invited speakers (tentative).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="card p-6 text-center">
+                    <img src="https://placehold.co/144x144/131c2f/60A5FA?text=SY" alt="Serena Yeung-Levy" class="profile-img rounded-full mx-auto mb-4">
+                    <h3 class="org-name"><a href="https://ai.stanford.edu/~syyeung/">Serena Yeung-Levy</a></h3>
+                    <p class="org-affil c1">Stanford University</p>
+                    <p class="org-bio">Leads the Medical AI and Computer Vision Lab (MARVL); expertise in CV for healthcare including surgical tool detection and video-based clinical monitoring.</p>
+                    <p class="org-loc" style="margin-top: 8px; font-style: italic;">Tentative</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="https://placehold.co/144x144/131c2f/60A5FA?text=DS" alt="Dinggang Shen" class="profile-img rounded-full mx-auto mb-4">
+                    <h3 class="org-name">Dinggang Shen</h3>
+                    <p class="org-affil c2">ShanghaiTech University</p>
+                    <p class="org-bio">Founding Dean of the School of Biomedical Engineering; IEEE/AIMBE/IAPR/MICCAI Fellow; pioneer in deep learning for medical imaging with foundational contributions to brain imaging, cancer diagnosis, and prognosis.</p>
+                    <p class="org-loc" style="margin-top: 8px; font-style: italic;">Tentative</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <div class="section-heading"><h2>Workshop Program</h2></div>
+            <div class="card-section">
+                <p class="muted" style="text-align: center; margin-bottom: 32px;">Half-day in-person event &middot; Tentative schedule</p>
+                <table class="schedule">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="time">08:30 &ndash; 08:45</td><td>Opening Remarks</td></tr>
+                    <tr class="keynote"><td class="time">08:45 &ndash; 09:25</td><td>Keynote #1 &mdash; 30 min talk + 10 min Q&amp;A</td></tr>
+                    <tr><td class="time">09:25 &ndash; 09:35</td><td>Accepted Paper Oral Presentation #1</td></tr>
+                    <tr><td class="time">09:35 &ndash; 09:45</td><td>Accepted Paper Oral Presentation #2</td></tr>
+                    <tr><td class="time">09:45 &ndash; 09:55</td><td>Accepted Paper Oral Presentation #3</td></tr>
+                    <tr class="break"><td class="time">09:55 &ndash; 10:35</td><td>Coffee Break / Poster Session</td></tr>
+                    <tr class="keynote"><td class="time">10:35 &ndash; 11:15</td><td>Keynote #2 &mdash; 30 min talk + 10 min Q&amp;A</td></tr>
+                    <tr><td class="time">11:15 &ndash; 11:30</td><td>MedVidU Challenge: Introduction</td></tr>
+                    <tr><td class="time">11:30 &ndash; 12:00</td><td>Presentations from Top 3 Teams (10 min each)</td></tr>
+                    <tr><td class="time">12:00 &ndash; 12:15</td><td>Challenge Awards &amp; Closing Remarks</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <section id="organizers">
+            <div class="section-heading"><h2>Organizers</h2></div>
+            <p class="muted" style="text-align: center; margin-bottom: 40px;">United Imaging Intelligence &middot; University of Strasbourg / IHU Strasbourg &middot; TUM</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <img src="img/busam_benjamin.jpg" alt="Benjamin Busam" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BB';">
+                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/busam-benjamin">Benjamin Busam</a></h3>
+                    <p class="org-affil c3">TUM</p>
+                    <p class="org-loc">Germany</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Terrence.jpg" alt="Terrence Chen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=TC';">
+                    <h3 class="org-name"><a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en">Terrence Chen</a></h3>
+                    <p class="org-affil c4">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Anwesa.jpg" alt="Anwesa Choudhuri" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=AC';">
+                    <h3 class="org-name"><a href="https://anwesachoudhuri.github.io/">Anwesa Choudhuri</a></h3>
+                    <p class="org-affil c5">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Zhongpai.jpg" alt="Zhongpai Gao" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZG';">
+                    <h3 class="org-name"><a href="https://sites.google.com/site/gaozhongpai/home">Zhongpai Gao</a></h3>
+                    <p class="org-affil c6">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/NavabNassir.jpg" alt="Nassir Navab" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NN';">
+                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/navab-nassir">Nassir Navab</a></h3>
+                    <p class="org-affil c1">TUM</p>
+                    <p class="org-loc">Germany</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/nguyen.png" alt="Van Nguyen Nguyen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=VN';">
+                    <h3 class="org-name"><a href="https://nv-nguyen.github.io/">Van Nguyen Nguyen</a></h3>
+                    <p class="org-affil c2">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/nicolaspadoy.jpg" alt="Nicolas Padoy" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NP';">
+                    <h3 class="org-name"><a href="https://camma.unistra.fr/npadoy/">Nicolas Padoy</a></h3>
+                    <p class="org-affil c3">University of Strasbourg / IHU Strasbourg</p>
+                    <p class="org-loc">France</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/benjaminplanche.jpg" alt="Benjamin Planche" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BP';">
+                    <h3 class="org-name"><a href="https://planche.me/">Benjamin Planche</a></h3>
+                    <p class="org-affil c4">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/ziyan.jpg" alt="Ziyan Wu" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZW';">
+                    <h3 class="org-name"><a href="https://wuziyan.com">Ziyan Wu</a></h3>
+                    <p class="org-affil c5">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/kunyuan.jpg" alt="Kun Yuan" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=KY';">
+                    <h3 class="org-name"><a href="https://flaick.github.io/">Kun Yuan</a></h3>
+                    <p class="org-affil c6">University of Strasbourg &amp; TUM</p>
+                    <p class="org-loc">France / Germany</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Meng.jpeg" alt="Meng Zheng" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=MZ';">
+                    <h3 class="org-name"><a href="https://meng-zheng.com/">Meng Zheng</a></h3>
+                    <p class="org-affil c1">United Imaging Intelligence</p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-heading"><h2>Contact</h2></div>
+            <div class="card-section">
+                <p>For general inquiries about the workshop, please email <a href="mailto:anwesa.jhinuk@gmail.com">anwesa.jhinuk@gmail.com</a>.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background: var(--bg-soft); border-top: 1px solid var(--line); padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 14px;">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 Workshop on Medical Video Understanding (MedVidU). All rights reserved.</p>
+            <p style="margin-top: 6px;">Held in conjunction with ECCV 2026.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+
+</body>
+</html>
