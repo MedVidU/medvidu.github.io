@@ -23,20 +23,36 @@
             --accent-deep: #1e40af;
         }
         html { scroll-behavior: smooth; }
-        body, p, h1, h2, h3, h4 {
+        body, h1, h2, h3, h4 {
             margin: 0;
             font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: var(--text);
         }
+        p {
+            margin: 0;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-dim);
+        }
+        strong { color: var(--text); }
         body {
-            background: var(--bg);
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(70vw 60vh at -10% 0%, rgba(96, 165, 250, 0.07), transparent 60%),
+                radial-gradient(60vw 60vh at 110% 50%, rgba(94, 234, 212, 0.05), transparent 60%),
+                radial-gradient(60vw 60vh at 50% 120%, rgba(59, 130, 246, 0.05), transparent 60%);
+            background-attachment: fixed;
             line-height: 1.6;
-            font-size: 18px;
+            font-size: 17px;
             -webkit-font-smoothing: antialiased;
         }
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
+        h1, h2, .display {
+            font-family: 'Space Grotesk', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+        h3, h4 {
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            letter-spacing: -0.01em;
             font-weight: 600;
         }
         a { color: var(--accent-strong); text-decoration: none; }
@@ -65,7 +81,22 @@
             line-height: 1.1;
             color: #ffffff;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 18px;
+        }
+        .page-header h1 > span {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 14px;
+        }
+        .page-header h1 > span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #5EEAD4);
+            border-radius: 999px;
         }
         .page-header .sub {
             color: var(--text-dim);
@@ -82,12 +113,7 @@
         .back-link:hover { color: var(--accent-soft); text-decoration: none; }
 
         .card-section {
-            background: var(--bg-card);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 32px 40px;
-            box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5);
-            margin-top: 40px;
+            margin-top: 32px;
         }
         .card-section > :first-child { margin-top: 0; }
         .card-section > :last-child { margin-bottom: 0; }
@@ -101,40 +127,72 @@
             margin: 24px 0 10px;
             color: var(--text);
         }
-        .card-section p { margin-bottom: 14px; color: var(--text-dim); }
+        .card-section p { margin-bottom: 14px; }
         .card-section ul { list-style: disc; padding-left: 24px; margin-bottom: 16px; color: var(--text-dim); }
         .card-section li { margin: 6px 0; }
         .card-section a { color: var(--accent-strong); }
 
-        /* Step blocks */
+        /* Lead paragraph (intro above the steps) */
+        .card-section > p:first-of-type {
+            font-size: 18px;
+            color: var(--text);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+
+        /* Step blocks — each step is its own card */
         .step {
             display: grid;
             grid-template-columns: 56px 1fr;
-            gap: 20px;
-            padding: 24px 0;
-            border-top: 1px solid var(--line);
+            gap: 22px;
+            align-items: start;
+            padding: 26px 30px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background:
+                linear-gradient(180deg, rgba(96, 165, 250, 0.035), transparent 40%),
+                var(--bg-card);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.04) inset,
+                0 10px 28px -18px rgba(0, 0, 0, 0.55);
+            margin-top: 18px;
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .step:first-of-type { border-top: none; padding-top: 8px; }
+        .step:hover {
+            border-color: rgba(96, 165, 250, 0.35);
+            transform: translateY(-2px);
+            box-shadow:
+                0 16px 32px -16px rgba(0, 0, 0, 0.6),
+                0 1px 0 rgba(255, 255, 255, 0.05) inset;
+        }
+        .step:first-of-type { margin-top: 28px; }
+
         .step-num {
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: rgba(96, 165, 250, 0.12);
-            border: 1px solid rgba(96, 165, 250, 0.35);
-            color: var(--accent);
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.30), rgba(94, 234, 212, 0.18));
+            border: 1px solid rgba(96, 165, 250, 0.50);
+            color: var(--accent-soft);
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow:
+                0 8px 20px -8px rgba(96, 165, 250, 0.55),
+                0 1px 0 rgba(255, 255, 255, 0.1) inset;
         }
         .step-body h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
+            margin-top: 2px;
+            margin-bottom: 10px;
             color: var(--text);
+            font-size: 19px;
+            font-weight: 600;
         }
         .step-body p { margin-bottom: 10px; }
+        .step-body p:last-child { margin-bottom: 0; }
         .step-body .note {
             font-size: 14px;
             color: var(--text-faint);
@@ -212,12 +270,12 @@
     <header class="page-header">
         <div class="container mx-auto px-6" style="max-width: 1000px;">
             <a href="index.html#challenge" class="back-link"><i class="fas fa-arrow-left"></i> Back to Challenge</a>
-            <h1>MedVidU Challenge Guide</h1>
+            <h1><span>MedVidU Challenge Guide</span></h1>
             <p class="sub">Step-by-step instructions for participating in the MedVidU Challenge.</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6" style="max-width: 1000px; padding-bottom: 80px;">
+    <main class="container mx-auto px-6" style="max-width: 880px; padding-bottom: 80px;">
 
         <div class="card-section">
             <p>The MedVidU Challenge evaluates models on a strictly held-out test set across multiple medical-video tasks. Submissions are made by sending a Docker image of your model, which we then run internally on the held-out data. Follow the steps below.</p>
