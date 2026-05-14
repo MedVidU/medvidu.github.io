@@ -292,6 +292,50 @@
             line-height: 1.55;
         }
 
+        /* Challenge resource tiles */
+        .resource-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 28px 0 8px;
+        }
+        @media (max-width: 768px) {
+            .resource-tiles { grid-template-columns: 1fr; }
+        }
+        .resource-tile {
+            display: block;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px 20px;
+            color: var(--text);
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .resource-tile:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.55);
+            text-decoration: none;
+        }
+        .resource-tile .resource-icon {
+            font-size: 22px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .resource-tile .resource-title {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .resource-tile .resource-desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
         /* "Coming soon" placeholders */
         .coming-soon {
             text-align: center;
@@ -336,6 +380,8 @@
             color: var(--text);
             width: 33%;
         }
+        #challenge table.dates td.label { width: 42%; }
+        #challenge table.dates td.date { width: 28%; white-space: nowrap; }
         table.dates td.countdown {
             color: var(--text-faint);
             font-variant-numeric: tabular-nums;
@@ -366,8 +412,8 @@
             <div class="hidden md:flex space-x-6 text-sm">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
-                <a href="#callforpapers" class="nav-link">Call for Papers</a>
                 <a href="#challenge" class="nav-link">Challenge</a>
+                <a href="#callforpapers" class="nav-link">Call for Papers</a>
                 <!-- <a href="#dataset" class="nav-link">Dataset</a> -->
                 <!-- <a href="#leaderboard" class="nav-link">Leaderboard</a> -->
                 <a href="#speakers" class="nav-link">Speakers</a>
@@ -385,8 +431,8 @@
         <div id="mobile-menu" class="md:hidden hidden" style="background: var(--bg-soft); border-top: 1px solid var(--line); color: var(--text);">
             <a href="#home" class="block px-6 py-3 nav-link">Home</a>
             <a href="#about" class="block px-6 py-3 nav-link">About</a>
-            <a href="#callforpapers" class="block px-6 py-3 nav-link">Call for Papers</a>
             <a href="#challenge" class="block px-6 py-3 nav-link">Challenge</a>
+            <a href="#callforpapers" class="block px-6 py-3 nav-link">Call for Papers</a>
             <!-- <a href="#dataset" class="block px-6 py-3 nav-link">Dataset</a> -->
             <!-- <a href="#leaderboard" class="block px-6 py-3 nav-link">Leaderboard</a> -->
             <a href="#speakers" class="block px-6 py-3 nav-link">Speakers</a>
@@ -409,8 +455,8 @@
             </h2>
             <h2 class="mb-10">8&ndash;9 September 2026 &middot; Malmö, Sweden</h2>
             <div class="hero-actions flex flex-col sm:flex-row gap-4">
-                <a href="#callforpapers" class="btn btn-primary">Call for Papers</a>
                 <a href="#challenge" class="btn btn-primary">MedVidU Challenge</a>
+                <a href="#callforpapers" class="btn btn-primary">Call for Papers</a>
             </div>
         </div>
     </header>
@@ -423,6 +469,66 @@
                 <p>Welcome to the Workshop on Medical Video Understanding (MedVidU), held in conjunction with ECCV 2026.</p>
                 <p>Medical video understanding is a rapidly emerging frontier at the intersection of computer vision and healthcare. Medical procedures generate massive volumes of video data, yet the ability to automatically interpret this data &mdash; recognizing phases, detecting critical anatomical structures, grounding temporal events, and generating rich granular textual descriptions &mdash; remains an open and challenging problem. Recent advances in large multimodal models and video foundation models have created unprecedented opportunities to tackle these tasks, but standardized benchmarks that span diverse tasks and community-wide evaluation protocols are still lacking.</p>
                 <p>This workshop addresses this gap by bringing together researchers working on medical AI and video understanding. To catalyze progress, the workshop hosts the <strong>MedVidU Challenge</strong>, centered on the diverse <strong><a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a></strong> dataset (CVPR 2026), spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+            </div>
+        </section>
+
+        <section id="challenge">
+            <div class="section-heading"><h2>MedVidU Challenge</h2></div>
+            <div class="card-section">
+                <p>The MedVidU Challenge is built on the <a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a> dataset (CVPR 2026), providing a unified evaluation across diverse tasks including Critical View of Safety (CVS) assessment, next action prediction, skill assessment, temporal action grounding, dense video captioning, video summary &amp; region captioning. All submissions are evaluated on a strictly held-out test set, spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+
+                <div class="resource-tiles">
+                    <a class="resource-tile" href="challenge-guide.html">
+                        <div class="resource-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="resource-title">Guide</div>
+                        <div class="resource-desc">Step-by-step instructions for participating in the challenge.</div>
+                    </a>
+                    <a class="resource-tile" href="https://huggingface.co/datasets/UII-AI/MedVidU_ValidationData" target="_blank" rel="noopener">
+                        <div class="resource-icon"><i class="fas fa-database"></i></div>
+                        <div class="resource-title">Dataset</div>
+                        <div class="resource-desc">Train and validate on the MedVidU data, hosted on Hugging Face.</div>
+                    </a>
+                    <a class="resource-tile" href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">
+                        <div class="resource-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="resource-title">Validation Leaderboard</div>
+                        <div class="resource-desc">Community leaderboard for validation feedback during development.</div>
+                    </a>
+                </div>
+
+                <h3>Important Dates</h3>
+                <table class="dates">
+                    <tbody>
+                        <tr>
+                            <td class="label">Registration Opens &amp; Dataset Release (HuggingFace)</td>
+                            <td class="date">May 15, 2026</td>
+                            <td class="countdown" data-deadline="2026-05-16T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Public Validation Leaderboard Accessible</td>
+                            <td class="date">May 15, 2026</td>
+                            <td class="countdown" data-deadline="2026-05-16T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Docker Containers Released</td>
+                            <td class="date">May 20, 2026</td>
+                            <td class="countdown" data-deadline="2026-05-21T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Workshop Paper Submission (Encouraged)</td>
+                            <td class="date">July 13, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-07-14T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Challenge Deadline</td>
+                            <td class="date">July 31, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="dates-note">*Deadlines are Anywhere on Earth (AoE). Timelines are subject to change.</p>
+
+                <p style="margin-top: 24px;">Top 3 winners will get a chance to present their method in the workshop and will be invited to submit technical reports for inclusion in the proceedings. Note that participants must submit a manuscript by July 13 to be included in the proceedings.</p>
+                <p>An extended journal submission with challenge winners and additional contributions is planned. Prize information will be available soon.</p>
             </div>
         </section>
 
@@ -460,7 +566,7 @@
                             <td class="countdown" data-deadline="2026-07-14T11:59:59Z">Loading&hellip;</td>
                         </tr>
                         <tr>
-                            <td class="label">ECCV Accepted Paper Submit</td>
+                            <td class="label">ECCV Accepted Paper Submission</td>
                             <td class="date">July 24, 2026 (23:59 AoE)</td>
                             <td class="countdown" data-deadline="2026-07-25T11:59:59Z">Loading&hellip;</td>
                         </tr>
@@ -477,39 +583,6 @@
                     </tbody>
                 </table>
                 <p class="dates-note">*All deadlines are Anywhere on Earth (AoE). Timelines are subject to change. Submission portal will be announced soon.</p>
-            </div>
-        </section>
-
-        <section id="challenge">
-            <div class="section-heading"><h2>MedVidU Challenge</h2></div>
-            <div class="card-section">
-                <p>The MedVidU Challenge is built on the <a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a> dataset (CVPR 2026), providing a unified evaluation across diverse tasks including:</p>
-                <ul>
-                    <li>Critical View of Safety (CVS) assessment</li>
-                    <li>Next action prediction</li>
-                    <li>Skill assessment</li>
-                    <li>Temporal action grounding</li>
-                    <li>Dense video captioning</li>
-                    <li>Video summary and region captioning</li>
-                </ul>
-                <p>All submissions are evaluated on a strictly held-out test set. The challenge spans four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
-
-                <h3>Important Dates</h3>
-                <table class="dates">
-                    <tbody>
-                        <tr>
-                            <td class="label">Challenge Deadline</td>
-                            <td class="date">July 31, 2026 (23:59 AoE)</td>
-                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="dates-note">*Deadline is Anywhere on Earth (AoE). Timelines are subject to change.</p>
-
-                <div class="coming-soon" style="margin-top: 32px;">
-                    <strong>Challenge details coming soon</strong>
-                    Submission instructions, dataset, evaluation protocol, and prize information will be posted here.
-                </div>
             </div>
         </section>
 
