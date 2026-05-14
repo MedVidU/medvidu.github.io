@@ -283,11 +283,15 @@
             <div class="step">
                 <div class="step-num">1</div>
                 <div class="step-body">
-                    <h3>Download data and train your model</h3>
-                    <p>Download the MedVidU validation data from <a href="https://huggingface.co/datasets/UII-AI/MedVidU_ValidationData" target="_blank" rel="noopener">Hugging Face</a>. You are free to train and validate on this data together with any other open-source or internal data of your choice.</p>
-                    <p>While developing, you are welcome to submit predictions to our <a href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">public community leaderboard</a> for validation feedback.</p>
+                    <h3>Download the data and train your model</h3>
+                    <ul>
+                        <li>Download the MedVidU train/val split from <a href="https://huggingface.co/datasets/UII-AI/MedVidU_ECCV2026_TrainVal" target="_blank" rel="noopener">Hugging Face</a>.</li>
+                        <li>Sign in to Hugging Face, click <strong>Request access</strong>, fill out the short form, and agree to the terms of use. Requests are reviewed manually and typically approved within a few business days.</li>
+                        <li>Once approved, you are free to use this split for any combination of training and local validation, alongside any other open-source or internal data of your choice.</li>
+                        <li>While developing, you may also submit predictions to the <a href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">public MedVidBench leaderboard</a> for additional online validation feedback. The MedVidBench test set has hidden ground truth and accepts unlimited submissions — a useful independent sanity check on a related (but disjoint) test set.</li>
+                        <li>Final challenge ranking, however, is computed only on the hidden MedVidU test set, which is never released (see steps&nbsp;2–4).</li>
+                    </ul>
                     <p><strong>Model size constraint <span class="pill warn">Important</span></strong><br>Submitted models must not exceed <strong>7B parameters</strong>.</p>
-                    <!-- <p>For the expected input/output schema, see the <a href="#data-format">data format</a> section below and the reference implementation at <a href="https://github.com/UII-AI/MedGRPO-Code" target="_blank" rel="noopener">UII-AI/MedGRPO-Code</a>.</p> -->
                 </div>
             </div>
 
