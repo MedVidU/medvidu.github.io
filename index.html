@@ -445,6 +445,8 @@
             color: var(--text);
             width: 33%;
         }
+        table.dates td.date.deadline { color: #F87171; font-weight: 600; }
+        table.dates td.date.live { color: #34D399; font-weight: 600; }
         #challenge table.dates td.label { width: 42%; }
         #challenge table.dates td.date { width: 28%; white-space: nowrap; }
         table.dates td.countdown {
@@ -458,6 +460,14 @@
             font-style: italic;
             margin-top: 12px;
         }
+        .note-callout {
+            border-left: 3px solid #F87171;
+            padding: 6px 0 6px 14px;
+            margin: 16px 0;
+            color: var(--text);
+            font-size: 15px;
+        }
+        .note-callout strong { color: #F87171; }
         ::selection { background: rgba(96, 165, 250, 0.30); color: #f8fafc; }
 
         /* Scrollbar (WebKit) */
@@ -540,7 +550,7 @@
         <section id="challenge">
             <div class="section-heading"><h2>MedVidU Challenge</h2></div>
             <div class="card-section">
-                <p>The MedVidU Challenge is built on the <a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a> dataset (CVPR 2026), providing a unified evaluation across diverse tasks including Critical View of Safety (CVS) assessment, next action prediction, skill assessment, temporal action grounding, dense video captioning, video summary &amp; region captioning. All submissions are evaluated on a strictly held-out test set, spanning four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
+                <p>The MedVidU Challenge is built on the <a href="https://arxiv.org/abs/2512.06581" target="_blank" rel="noopener">MedVidBench</a> dataset (CVPR 2026), providing a unified evaluation across diverse tasks including Critical View of Safety (CVS) assessment, next action prediction, skill assessment, temporal action grounding, dense video captioning, and video summary &amp; region captioning. The benchmark spans four domains: laparoscopic surgery, open surgery, robotic surgery, and nursing.</p>
 
                 <div class="resource-tiles">
                     <a class="resource-tile" href="challenge-guide.html">
@@ -548,60 +558,78 @@
                         <div class="resource-title">Guide</div>
                         <div class="resource-desc">Step-by-step instructions for participating in the challenge.</div>
                     </a>
-                    <a class="resource-tile" href="https://huggingface.co/datasets/UII-AI/MedVidU_ValidationData" target="_blank" rel="noopener">
+                    <a class="resource-tile" href="https://huggingface.co/datasets/UII-AI/MedVidU_ECCV2026_TrainVal" target="_blank" rel="noopener">
                         <div class="resource-icon"><i class="fas fa-database"></i></div>
-                        <div class="resource-title">Dataset</div>
-                        <div class="resource-desc">Train and validate on the MedVidU data, hosted on Hugging Face.</div>
+                        <div class="resource-title">Training Data</div>
+                        <div class="resource-desc">MedVidU ECCV 2026 train/val split, hosted on Hugging Face.</div>
                     </a>
                     <a class="resource-tile" href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">
                         <div class="resource-icon"><i class="fas fa-trophy"></i></div>
-                        <div class="resource-title">Validation Leaderboard</div>
-                        <div class="resource-desc">Community leaderboard for validation feedback during development.</div>
+                        <div class="resource-title">MedVidBench Leaderboard</div>
+                        <div class="resource-desc">Submit predictions on the MedVidBench test set and track standings.</div>
                     </a>
                 </div>
+
+                <h3>Challenge Format</h3>
+                <p>The challenge runs in two phases:</p>
+
+                <h4 style="color: var(--text); font-size: 18px; margin: 20px 0 8px;">Phase 1 &mdash; Public Leaderboard</h4>
+                <ul>
+                    <li>Download the MedVidU ECCV 2026 train/val split from <a href="https://huggingface.co/datasets/UII-AI/MedVidU_ECCV2026_TrainVal" target="_blank" rel="noopener">UII-AI/MedVidU_ECCV2026_TrainVal</a> and train your model.</li>
+                    <li>Run inference on the <a href="https://huggingface.co/datasets/UII-AI/MedVidBench" target="_blank" rel="noopener">MedVidBench</a> test set and submit your predictions to the <a href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">MedVidBench Leaderboard</a>.</li>
+                    <li>Include the following with your submission: <strong>Model Name</strong>, <strong>Team Name</strong>, <strong>Authors</strong>, <strong>Institution</strong>, <strong>Email ID</strong> (mandatory for MedVidU ECCV 2026 Challenge participants), and set <strong>Remark: &ldquo;ECCV challenge&rdquo;</strong>.</li>
+                    <li>Challenge participants are <strong>required</strong> to submit a report on OpenReview (coming soon) for the MedVidU Challenge.</li>
+                </ul>
+
+                <h4 style="color: var(--text); font-size: 18px; margin: 20px 0 8px;">Phase 2 &mdash; Held-Out Evaluation</h4>
+                <ul>
+                    <li>The top 5 teams on the Phase 1 leaderboard will be further evaluated on a completely held-out test set.</li>
+                    <li>A Docker image will be released for Phase 2 submissions.</li>
+                </ul>
 
                 <h3>Important Dates</h3>
                 <table class="dates">
                     <tbody>
                         <tr>
                             <td class="label">Registration Opens &amp; Dataset Release (HuggingFace)</td>
-                            <td class="date">May 20, 2026</td>
+                            <td class="date live">May 20, 2026</td>
                             <td class="countdown" data-deadline="2026-05-21T11:59:59Z">Loading&hellip;</td>
                         </tr>
                         <tr>
-                            <td class="label">Public Validation Leaderboard Accessible</td>
-                            <td class="date">May 20, 2026</td>
+                            <td class="label">Beginning of Phase 1 (Public Validation Leaderboard)</td>
+                            <td class="date live">May 20, 2026</td>
                             <td class="countdown" data-deadline="2026-05-21T11:59:59Z">Loading&hellip;</td>
                         </tr>
                         <tr>
-                            <td class="label">Docker Containers Released</td>
-                            <td class="date">May 22, 2026</td>
-                            <td class="countdown" data-deadline="2026-05-23T11:59:59Z">Loading&hellip;</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Workshop Paper Submission (Encouraged)</td>
-                            <td class="date">July 13, 2026 (23:59 AoE)</td>
+                            <td class="label">Workshop Paper Submission (Mandatory for Challenge Participants)</td>
+                            <td class="date deadline">July 13, 2026 (23:59 AoE)</td>
                             <td class="countdown" data-deadline="2026-07-14T11:59:59Z">Loading&hellip;</td>
                         </tr>
                         <tr>
-                            <td class="label">Challenge Deadline</td>
-                            <td class="date">July 31, 2026 (23:59 AoE)</td>
-                            <td class="countdown" data-deadline="2026-08-01T11:59:59Z">Loading&hellip;</td>
+                            <td class="label">Phase 1 Deadline (Public Leaderboard Closes)</td>
+                            <td class="date deadline">July 13, 2026 (23:59 AoE)</td>
+                            <td class="countdown" data-deadline="2026-07-14T11:59:59Z">Loading&hellip;</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Phase 2 Docker Image Released (Top 5 Teams)</td>
+                            <td class="date">TBA</td>
+                            <td class="countdown"></td>
                         </tr>
                     </tbody>
                 </table>
                 <p class="dates-note">*Deadlines are Anywhere on Earth (AoE). Timelines are subject to change.</p>
 
-                <p style="margin-top: 24px;">Top 3 winners will get a chance to present their method in the workshop and will be invited to submit technical reports for inclusion in the proceedings. Note that participants must submit a manuscript by July 13 to be included in the proceedings.</p>
-                <p>An extended journal submission with challenge winners and additional contributions is planned. Prize information will be available soon.</p>
+                <p style="margin-top: 24px;">Top 3 winners will get a chance to present their method in the workshop.</p>
+                <p>We plan to have an extended journal submission with all the phase 2 qualifiers. Prize information will be available soon.</p>
             </div>
         </section>
 
         <section id="callforpapers">
             <div class="section-heading"><h2>Call for Papers</h2></div>
             <div class="card-section">
-                <p>Please submit your manuscript formatted according to the ECCV 2026 author guidelines. Accepted papers are intended to be published in the ECCV 2026 workshop proceedings. Top-performing challenge participants will be invited to submit technical reports for inclusion in the proceedings.</p>
+                <p>Please submit your manuscript formatted according to the ECCV 2026 author guidelines. Accepted papers are intended to be published in the ECCV 2026 workshop proceedings.</p>
                 <p>We encourage submissions reporting novel theories, methods, and applications of video understanding in medical and surgical settings.</p>
+                <p class="note-callout"><strong>Note:</strong> MedVidU 2026 Challenge participants are <strong>required</strong> to submit a paper.</p>
 
                 <div style="text-align: center; margin: 28px 0 8px;">
                     <span class="btn btn-disabled" aria-disabled="true">
@@ -860,6 +888,7 @@
         function updateCountdowns() {
             const now = Date.now();
             countdownEls.forEach(el => {
+                if (!el.dataset.deadline) return;
                 const target = new Date(el.dataset.deadline).getTime();
                 let diff = target - now;
                 if (diff <= 0) {
