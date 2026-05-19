@@ -239,6 +239,15 @@
         }
         pre code { background: none; padding: 0; color: inherit; }
 
+        .note-callout {
+            border-left: 3px solid #F87171;
+            padding: 8px 0 8px 14px;
+            margin: 14px 0 0;
+            color: var(--text);
+            font-size: 15px;
+        }
+        .note-callout strong { color: #F87171; }
+
         ::selection { background: rgba(96, 165, 250, 0.30); color: #f8fafc; }
         ::-webkit-scrollbar { width: 10px; height: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
@@ -344,6 +353,7 @@
                 <div class="step-body">
                     <h3>Submit your Docker image</h3>
                     <p>Package your trained model inside the provided Docker image and submit it to the organizers by email. We will run your container on the completely held-out test set to determine the final challenge ranking.</p>
+                    <p class="note-callout"><strong>Confidentiality.</strong> Submitted Docker images (and the model weights they contain) are treated as confidential. They will be accessed only by the organizing team for the sole purpose of running the held-out evaluation, will <strong>not</strong> be shared with any third party, will <strong>not</strong> be redistributed or open-sourced, and will be <strong>permanently deleted from our infrastructure</strong> once final rankings are determined. Teams that do not wish to open-source their models can participate without concern.</p>
                 </div>
             </div>
 

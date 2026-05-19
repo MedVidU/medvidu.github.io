@@ -571,13 +571,13 @@
                 </div>
 
                 <h3>Challenge Format</h3>
-                <p>The challenge runs in two phases:</p>
+                <p>The challenge runs in two phases. See the <a href="challenge-guide.html">Challenge Guide</a> for detailed step-by-step instructions.</p>
 
                 <h4 style="color: var(--text); font-size: 18px; margin: 20px 0 8px;">Phase 1 &mdash; Public Leaderboard</h4>
                 <ul>
                     <li>Download the MedVidU ECCV 2026 train/val split from <a href="https://huggingface.co/datasets/UII-AI/MedVidU_ECCV2026_TrainVal" target="_blank" rel="noopener">UII-AI/MedVidU_ECCV2026_TrainVal</a> and train your model.</li>
                     <li>Run inference on the <a href="https://huggingface.co/datasets/UII-AI/MedVidBench" target="_blank" rel="noopener">MedVidBench</a> test set and submit your predictions to the <a href="https://huggingface.co/spaces/UII-AI/MedVidBench-Leaderboard" target="_blank" rel="noopener">MedVidBench Leaderboard</a>.</li>
-                    <li>Include the following with your submission: <strong>Model Name</strong>, <strong>Team Name</strong>, <strong>Authors</strong>, <strong>Institution</strong>, <strong>Email ID</strong> (mandatory for MedVidU ECCV 2026 Challenge participants), and set <strong>Remark: &ldquo;ECCV challenge&rdquo;</strong>.</li>
+                    <!-- <li>Include the following with your submission: <strong>Model Name</strong>, <strong>Team Name</strong>, <strong>Authors</strong>, <strong>Institution</strong>, <strong>Email ID</strong> (mandatory for MedVidU ECCV 2026 Challenge participants), and set <strong>Remark: &ldquo;ECCV challenge&rdquo;</strong>.</li> -->
                     <li>Challenge participants are <strong>required</strong> to submit a report on OpenReview (coming soon) for the MedVidU Challenge.</li>
                 </ul>
 
@@ -586,6 +586,7 @@
                     <li>The top 5 teams on the Phase 1 leaderboard will be further evaluated on a completely held-out test set.</li>
                     <li>A Docker image will be released for Phase 2 submissions.</li>
                 </ul>
+                <p class="note-callout"><strong>Confidentiality:</strong> Submitted Docker images are kept private, never shared or open-sourced, and deleted after evaluation. See the <a href="challenge-guide.html">Challenge Guide</a> for details.</p>
 
                 <h3>Important Dates</h3>
                 <table class="dates">
@@ -758,56 +759,20 @@
             <p class="muted" style="text-align: center; margin-bottom: 40px;">United Imaging Intelligence &middot; University of Strasbourg / IHU Strasbourg &middot; TUM</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card p-6 text-center">
-                    <img src="img/busam_benjamin.jpg" alt="Benjamin Busam" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BB';">
-                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/busam-benjamin">Benjamin Busam</a></h3>
-                    <p class="org-affil c3"><a href="https://www.tum.de/" target="_blank" rel="noopener">TUM</a></p>
-                    <p class="org-loc">Germany</p>
-                </div>
-                <div class="card p-6 text-center">
-                    <img src="img/Terrence.jpg" alt="Terrence Chen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=TC';">
-                    <h3 class="org-name"><a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en">Terrence Chen</a></h3>
-                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
-                    <p class="org-loc">Boston, MA, USA</p>
-                </div>
-                <div class="card p-6 text-center">
                     <img src="img/Anwesa.jpg" alt="Anwesa Choudhuri" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=AC';">
                     <h3 class="org-name"><a href="https://anwesachoudhuri.github.io/">Anwesa Choudhuri</a></h3>
                     <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
                 <div class="card p-6 text-center">
-                    <img src="img/Zhongpai.jpg" alt="Zhongpai Gao" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZG';">
-                    <h3 class="org-name"><a href="https://sites.google.com/site/gaozhongpai/home">Zhongpai Gao</a></h3>
-                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
-                    <p class="org-loc">Boston, MA, USA</p>
-                </div>
-                <div class="card p-6 text-center">
-                    <img src="img/NavabNassir.jpg" alt="Nassir Navab" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NN';">
-                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/navab-nassir">Nassir Navab</a></h3>
+                    <img src="img/busam_benjamin.jpg" alt="Benjamin Busam" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BB';">
+                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/busam-benjamin">Benjamin Busam</a></h3>
                     <p class="org-affil c3"><a href="https://www.tum.de/" target="_blank" rel="noopener">TUM</a></p>
                     <p class="org-loc">Germany</p>
                 </div>
                 <div class="card p-6 text-center">
-                    <img src="img/nguyen.png" alt="Van Nguyen Nguyen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=VN';">
-                    <h3 class="org-name"><a href="https://nv-nguyen.github.io/">Van Nguyen Nguyen</a></h3>
-                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
-                    <p class="org-loc">Boston, MA, USA</p>
-                </div>
-                <div class="card p-6 text-center">
-                    <img src="img/nicolaspadoy.jpg" alt="Nicolas Padoy" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NP';">
-                    <h3 class="org-name"><a href="https://camma.unistra.fr/npadoy/">Nicolas Padoy</a></h3>
-                    <p class="org-affil"><a href="https://en.unistra.fr/fr" target="_blank" rel="noopener" style="color: #5EEAD4;">University of Strasbourg</a> / <a href="https://www.ihu-strasbourg.eu/?lang=en" target="_blank" rel="noopener" style="color: #34D399;">IHU Strasbourg</a></p>
-                    <p class="org-loc">France</p>
-                </div>
-                <div class="card p-6 text-center">
                     <img src="img/benjaminplanche.jpg" alt="Benjamin Planche" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=BP';">
                     <h3 class="org-name"><a href="https://planche.me/">Benjamin Planche</a></h3>
-                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
-                    <p class="org-loc">Boston, MA, USA</p>
-                </div>
-                <div class="card p-6 text-center">
-                    <img src="img/ziyan.jpg" alt="Ziyan Wu" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZW';">
-                    <h3 class="org-name"><a href="https://wuziyan.com">Ziyan Wu</a></h3>
                     <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
@@ -820,6 +785,42 @@
                 <div class="card p-6 text-center">
                     <img src="img/Meng.jpeg" alt="Meng Zheng" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=MZ';">
                     <h3 class="org-name"><a href="https://meng-zheng.com/">Meng Zheng</a></h3>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/NavabNassir.jpg" alt="Nassir Navab" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NN';">
+                    <h3 class="org-name"><a href="https://www.professoren.tum.de/en/navab-nassir">Nassir Navab</a></h3>
+                    <p class="org-affil c3"><a href="https://www.tum.de/" target="_blank" rel="noopener">TUM</a></p>
+                    <p class="org-loc">Germany</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/nicolaspadoy.jpg" alt="Nicolas Padoy" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=NP';">
+                    <h3 class="org-name"><a href="https://camma.unistra.fr/npadoy/">Nicolas Padoy</a></h3>
+                    <p class="org-affil"><a href="https://en.unistra.fr/fr" target="_blank" rel="noopener" style="color: #5EEAD4;">University of Strasbourg</a> / <a href="https://www.ihu-strasbourg.eu/?lang=en" target="_blank" rel="noopener" style="color: #34D399;">IHU Strasbourg</a></p>
+                    <p class="org-loc">France</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Terrence.jpg" alt="Terrence Chen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=TC';">
+                    <h3 class="org-name"><a href="https://scholar.google.com/citations?user=S2BT6ogAAAAJ&hl=en">Terrence Chen</a></h3>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/nguyen.png" alt="Van Nguyen Nguyen" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=VN';">
+                    <h3 class="org-name"><a href="https://nv-nguyen.github.io/">Van Nguyen Nguyen</a></h3>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/Zhongpai.jpg" alt="Zhongpai Gao" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZG';">
+                    <h3 class="org-name"><a href="https://sites.google.com/site/gaozhongpai/home">Zhongpai Gao</a></h3>
+                    <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
+                    <p class="org-loc">Boston, MA, USA</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="img/ziyan.jpg" alt="Ziyan Wu" class="profile-img rounded-full mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/131c2f/60A5FA?text=ZW';">
+                    <h3 class="org-name"><a href="https://wuziyan.com">Ziyan Wu</a></h3>
                     <p class="org-affil c1"><a href="https://www.uii-ai.com/" target="_blank" rel="noopener">United Imaging Intelligence</a></p>
                     <p class="org-loc">Boston, MA, USA</p>
                 </div>
