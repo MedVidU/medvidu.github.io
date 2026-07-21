@@ -287,9 +287,7 @@
     <main class="container mx-auto px-6" style="max-width: 880px; padding-bottom: 80px;">
 
         <div class="card-section">
-            <p>The MedVidU Challenge runs in two phases. <strong>Phase 1</strong> is a public leaderboard on the <a href="https://huggingface.co/datasets/UII-AI/MedVidBench" target="_blank" rel="noopener">MedVidBench</a> test set. The <strong>top 5</strong> teams from Phase 1 advance to <strong>Phase 2</strong>, where their models are evaluated on a completely held-out test set via a provided Docker image. Follow the steps below.</p>
-
-            <h2 style="font-size: 22px; margin-top: 36px; color: var(--accent);">Phase 1 &mdash; Public Leaderboard</h2>
+            <p>The MedVidU Challenge is run as a public leaderboard on the <a href="https://huggingface.co/datasets/UII-AI/MedVidBench" target="_blank" rel="noopener">MedVidBench</a> test set. Follow the steps below.</p>
 
             <div class="step">
                 <div class="step-num">1</div>
@@ -326,34 +324,6 @@
                 <div class="step-body">
                     <h3>Submit a report on OpenReview <span class="pill warn">Required</span></h3>
                     <p>All challenge participants are <strong>required</strong> to submit a report describing their method on OpenReview for the MedVidU Challenge. The submission link will be announced soon.</p>
-                </div>
-            </div>
-
-            <h2 style="font-size: 22px; margin-top: 44px; color: var(--accent);">Phase 2 &mdash; Held-Out Evaluation (Top 5 Teams) <span style="color: var(--text-faint); font-weight: 400; font-size: 16px;">(starts on <s>July 13</s> July 27)</span></h2>
-
-            <div class="step">
-                <div class="step-num">4</div>
-                <div class="step-body">
-                    <h3>Download the evaluation Docker image <span class="pill">Coming soon</span></h3>
-                    <p>The top 5 teams on the Phase 1 leaderboard will be invited to Phase 2. We will release a base Docker image with the evaluation harness and required entry-point interface. Build your submission on top of this image so that it is compatible with our internal evaluation pipeline.</p>
-                </div>
-            </div>
-
-            <!-- <div class="step">
-                <div class="step-num">5</div>
-                <div class="step-body">
-                    <h3>Send the signed data-use agreement</h3>
-                    <p>Before submitting, you must send a signed copy of the data-use and challenge participation agreement to the organizers. The agreement template will be provided alongside the Docker image release.</p>
-                    <p>Email the signed PDF to the challenge contact address (see the Contact section on the main page).</p>
-                </div>
-            </div> -->
-
-            <div class="step">
-                <div class="step-num">6</div>
-                <div class="step-body">
-                    <h3>Submit your Docker image</h3>
-                    <p>Package your trained model inside the provided Docker image and submit it to the organizers by email. We will run your container on the completely held-out test set to determine the final challenge ranking.</p>
-                    <p class="note-callout"><strong>Confidentiality.</strong> We <strong style="color: var(--text);">encourage</strong> teams to open-source their models to benefit the community, but this is <strong style="color: var(--text);">not required</strong>. Teams that wish to keep their models private can do so without concern: submitted Docker images (and the model weights they contain) are treated as confidential. They will be accessed only by the organizing team for the sole purpose of running the held-out evaluation, will <strong style="color: var(--text);">not</strong> be shared with any third party, will <strong style="color: var(--text);">not</strong> be redistributed or open-sourced by us, and will be <strong style="color: var(--text);">permanently deleted from our infrastructure</strong> once final rankings are determined.</p>
                 </div>
             </div>
 
